@@ -1,0 +1,18 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Zamówienie";
+}
+
+<h1>Twoje zamówienie</h1>
+<dl>
+    <dt>Id</dt>
+    <dd>@Model.Id</dd>
+    <dt>Data</dt>
+    <dd>@Model.Date</dd>
+    <dt>Telefon</dt>
+    <dd>@Model.Phone</dd>
+    <dt>Miasto</dt>
+    <dd>@Model.City</dd>
+    <dt>Adres</dt>
+    <dd>@Model.Address</dd>
+</dl>

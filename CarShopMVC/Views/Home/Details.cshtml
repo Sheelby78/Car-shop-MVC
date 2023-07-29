@@ -1,0 +1,14 @@
+﻿@model CarShopMVC.Models.Car
+
+@{
+    ViewData["Title"] = "More Info";
+}
+
+<h1>Szczegoly</h1>
+<h4>Marka: @Model.Brand</h4>
+<h4>Model: @Model.Model</h4>
+<h4>Moc: @Model.Power KM</h4>
+<h4>Cena: @Model.Price $</h4>
+<h4>Numer: @Model.Id</h4>
+<img class="rounded" src="~/images/@Model.Image" style="height: 20rem; width: 35rem" />
+<a asp-action="Details"></a>

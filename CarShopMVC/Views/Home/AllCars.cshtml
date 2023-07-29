@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CarShopMVC.Models.Car>
+
+@{
+    ViewData["Title"] = "Car Menu";
+}
+
+<h1>Cars Catalog:</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numer</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Zdjecie</th>
+            <th>Odnosniki</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>
+                    @car.Id
+                </td>
+                <td>
+                    @car.Brand
+                </td>
+                <td>
+                    @car.Model
+                </td>
+                <td>
+                    <img src="~/images/@car.Image" style="height: 9rem; width: 15rem" class="rounded">
+                </td>
+                <td>
+                    @Html.ActionLink("More Info", "Details", new {id = car.Id})
+                    <button class="btn btn-outline-primary mx-2 add-button" value="@car.Id">Do koszyka</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts
+    {
+    <script>
+        $(".add-button").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Cart/AddItem",
+                data: { itemId: $(this).val() },
+                success: function () {
+                    alert("Pizza dodana");
+                },
+                error: function () {
+                    alert("Błąd!");
+                }
+            });
+        });
+    </script>
+}
